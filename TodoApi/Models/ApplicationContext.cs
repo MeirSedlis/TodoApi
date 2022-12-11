@@ -3,13 +3,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TodoApi.Models;
 
-    public class ApplicationContext : DbContext
+public class ApplicationContext : DbContext
 {
+    protected readonly IConfiguration _configuration;
+
+    public ApplicationContext()
+    {
+
+    }
+    public ApplicationContext(IConfiguration configuration)
+    {
+        _configuration = configuration;
+    }
     public DbSet<Project> Projects { get; set; } = null!;
     public DbSet<TodoItem> TodoItems { get; set; } = null!;
-    public ApplicationContext(DbContextOptions<ApplicationContext> options)
-        : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        var connectionstring = _configuration.GetConnectionString("ApplicationContext");
+       optionsBuilder.UseNpgsql(connectionstring);
     }
+
 }
 
