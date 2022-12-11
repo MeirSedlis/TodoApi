@@ -16,7 +16,7 @@ public class ApplicationContext : DbContext
         _configuration = configuration;
     }
     public DbSet<Project> Projects { get; set; } = null!;
-    public DbSet<TodoItem> TodoItems { get; set; } = null!;
+    public DbSet<TodoItem> TodoItems { get; set; } 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionstring = _configuration.GetConnectionString("ApplicationContext");

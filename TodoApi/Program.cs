@@ -3,7 +3,7 @@ using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
+// var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 
@@ -17,17 +17,17 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Enable CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: myAllowSpecificOrigins,
-        builder =>
-        {
-            builder.WithOrigins("http://localhost:5077")
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-        });
-});
+// // Enable CORS
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy(name: myAllowSpecificOrigins,
+//         builder =>
+//         {
+//             builder.WithOrigins("http://localhost:5077")
+//             .AllowAnyMethod()
+//             .AllowAnyHeader();
+//         });
+// });
 
 
 // Configure the HTTP request pipeline.
@@ -39,7 +39,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(myAllowSpecificOrigins);
+// app.UseCors(myAllowSpecificOrigins);
 
 app.UseAuthorization();
 
