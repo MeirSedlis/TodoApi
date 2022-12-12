@@ -14,6 +14,7 @@ public class TodoItem
     public bool Is_complete { get; set; }
     public DateTime Inserted_at { get; init; } = DateTime.Now;
     public DateTime Updated_at { get; set; } = DateTime.Now;
+    public DateTime Due { get; set; }
     public string? Description { get; set; }
     public int Priority { get; set; } = 3;
 }

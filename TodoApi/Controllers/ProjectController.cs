@@ -4,7 +4,7 @@ using TodoApi.Models;
 namespace TodoApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class ProjectController : ControllerBase
 {
     private readonly ApplicationContext _context;
@@ -19,6 +19,15 @@ public class ProjectController : ControllerBase
         return _context.Projects;
     }
 
+    [HttpGet("id")]
+    public Project GetProject(int id)
+    {
+        Project project = _context.Projects
+            .First(project => project.Id == id);
+            
+        return project;
+    }
+
     [HttpPost]
     public Project Post(Project project)
     {
@@ -26,6 +35,29 @@ public class ProjectController : ControllerBase
         _context.SaveChanges();
 
         return project;
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult<Project> Delete(int id)
+    {
+        Project project = _context.Projects
+            .First(project => project.Id == id);
+        if (project is null)
+        {
+            return NotFound();
+        }
+        _context.Projects.Remove(project);
+        _context.SaveChanges();
+
+        return project;
+    }
+
+    [HttpPut("{id}")]
+    public void Update(int id, Project project)
+    {
+        project.Id = id;
+        _context.Projects.Update(project);
+        _context.SaveChanges();
     }
 
 }
