@@ -16,11 +16,12 @@ public class ApplicationContext : DbContext
         _configuration = configuration;
     }
     public DbSet<Project> Projects { get; set; } = null!;
-    public DbSet<TodoItem> TodoItems { get; set; } 
+    public DbSet<TodoItem> TodoItems { get; set; }
+    public DbSet<User> Users { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var connectionstring = _configuration.GetConnectionString("ApplicationContext");
-       optionsBuilder.UseNpgsql(connectionstring);
+        optionsBuilder.UseNpgsql(connectionstring);
     }
 
 }

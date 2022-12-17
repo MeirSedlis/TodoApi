@@ -10,7 +10,7 @@ public class Project
     [Required]
     public string Name { get; set; } = null!;
     [Required]
-    public string Owner { get; init; } = null!;
+    public User Owner { get; set; } = null!;
     public DateTime Inserted_at { get; init; } = DateTime.Now;
     public DateTime Updated_at { get; set; } = DateTime.Now;
     public string? Description { get; set; }
