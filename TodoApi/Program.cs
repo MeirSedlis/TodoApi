@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
+// var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 
@@ -14,20 +16,31 @@ builder.Services.AddDbContext<ApplicationContext>(opt =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+     {
+         options.Authority = $"https://{builder.Configuration["Auth0:Domain"]}";
+         options.TokenValidationParameters = 
+           new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+         {
+             ValidAudience = builder.Configuration["Auth0:Audience"],
+             ValidIssuer = $"{builder.Configuration["Auth0:Domain"]}"
+         };
+     });
 
-
+builder.Services.AddAuthorization();
 
 // // Enable CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: myAllowSpecificOrigins,
-        builder =>
-        {
-            builder.WithOrigins("http://localhost:3000")
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-        });
-});
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy(name: myAllowSpecificOrigins,
+//         builder =>
+//         {
+//             builder.WithOrigins("http://localhost:3000")
+//             .AllowAnyMethod()
+//             .AllowAnyHeader();
+//         });
+// });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -39,9 +52,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(myAllowSpecificOrigins);
-
-app.UseAuthorization();
+// app.UseCors(myAllowSpecificOrigins);
 
 app.MapControllers();
 
