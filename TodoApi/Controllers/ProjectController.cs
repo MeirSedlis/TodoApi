@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoApi.Models;
 
@@ -14,6 +15,7 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public IEnumerable<Project> GetProjects()
     {
         return _context.Projects;

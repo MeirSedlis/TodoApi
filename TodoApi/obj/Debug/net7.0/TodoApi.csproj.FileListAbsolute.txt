@@ -255,3 +255,11 @@
 /Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
 /Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
+/Users/meirsedlis/Projects/TodoApi/TodoApi/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
